@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="NetView"
+  id="myeclipse.1532347195537"
+  context-root="/NetView"
+  j2ee-spec="5.0"
+  archive="NetView.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

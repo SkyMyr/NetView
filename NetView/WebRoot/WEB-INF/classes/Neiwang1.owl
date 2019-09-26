@@ -1,0 +1,803 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY xml "http://www.w3.org/XML/1998/namespace" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#"
+     xml:base="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#isActionOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#isActionOf">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Action"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#isAddressOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#isAddressOf">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#IPAddOrMask"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Interface"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#isInterfaceOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#isInterfaceOf">
+        <rdfs:range rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Device"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Interface"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#isIpAddOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#isIpAddOf">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#IPAddOrMask"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Entity"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Interface"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#isMaskOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#isMaskOf">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#IPAddOrMask"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Interface"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Network"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#isObjectOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#isObjectOf">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Entity"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#isOperationOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#isOperationOf">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Operate"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#isSubjectOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#isSubjectOf">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Entity"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#firstPartIs -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#firstPartIs">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#IPAddOrMask"/>
+        <rdfs:range rdf:resource="&xsd;int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#fourthPartIs -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#fourthPartIs">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#IPAddOrMask"/>
+        <rdfs:range rdf:resource="&xsd;int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#secondPartIs -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#secondPartIs">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#IPAddOrMask"/>
+        <rdfs:range rdf:resource="&xsd;int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#thirdPartIs -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#thirdPartIs">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#IPAddOrMask"/>
+        <rdfs:range rdf:resource="&xsd;int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Action -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Action"/>
+    
+
+
+    <!-- http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#AllOperationsOnChannelOf -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#AllOperationsOnChannelOf">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Operate"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Device -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Device">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Entity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Entity -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Entity"/>
+    
+
+
+    <!-- http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Host -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Host">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Entity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#IPAddOrMask -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#IPAddOrMask"/>
+    
+
+
+    <!-- http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Interface -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Interface"/>
+    
+
+
+    <!-- http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Network -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Network">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Entity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Operate -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Operate"/>
+    
+
+
+    <!-- http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule"/>
+    
+
+
+    <!-- http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#SignalOperation -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#SignalOperation">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Operate"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#UnconsideredEntities -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#UnconsideredEntities">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Entity"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#AnyToOthers -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#AnyToOthers">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#UnconsideredEntities"/>
+        <isObjectOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule33"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Deny -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Deny">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Action"/>
+        <isActionOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule31"/>
+        <isActionOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule32"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#IP -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#IP">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#SignalOperation"/>
+        <isObjectOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule10"/>
+        <isObjectOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule11"/>
+        <isObjectOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule12"/>
+        <isObjectOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule13"/>
+        <isObjectOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule14"/>
+        <isObjectOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule15"/>
+        <isObjectOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule16"/>
+        <isObjectOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule17"/>
+        <isObjectOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule18"/>
+        <isObjectOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule19"/>
+        <isObjectOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule20"/>
+        <isObjectOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule21"/>
+        <isObjectOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule22"/>
+        <isObjectOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule23"/>
+        <isObjectOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule24"/>
+        <isObjectOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule25"/>
+        <isObjectOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule26"/>
+        <isObjectOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule27"/>
+        <isObjectOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule28"/>
+        <isObjectOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule29"/>
+        <isObjectOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule30"/>
+        <isObjectOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule31"/>
+        <isObjectOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule32"/>
+        <isObjectOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule33"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#OthersTo10.237.1.26 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#OthersTo10.237.1.26">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#UnconsideredEntities"/>
+        <isSubjectOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule31"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#OthersTo10.237.1.34 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#OthersTo10.237.1.34">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#UnconsideredEntities"/>
+        <isSubjectOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule32"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#OthersToAny -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#OthersToAny">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#UnconsideredEntities"/>
+        <isSubjectOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule33"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Permit -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Permit">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Action"/>
+        <isActionOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule10"/>
+        <isActionOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule11"/>
+        <isActionOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule12"/>
+        <isActionOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule13"/>
+        <isActionOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule14"/>
+        <isActionOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule15"/>
+        <isActionOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule16"/>
+        <isActionOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule17"/>
+        <isActionOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule18"/>
+        <isActionOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule19"/>
+        <isActionOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule20"/>
+        <isActionOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule21"/>
+        <isActionOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule22"/>
+        <isActionOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule23"/>
+        <isActionOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule24"/>
+        <isActionOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule25"/>
+        <isActionOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule26"/>
+        <isActionOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule27"/>
+        <isActionOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule28"/>
+        <isActionOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule29"/>
+        <isActionOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule30"/>
+        <isActionOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule33"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule10 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule10">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule11 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule11">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule12 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule12">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule13 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule13">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule14 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule14">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule15 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule15">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule16 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule16">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule17 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule17">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule18 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule18">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule19 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule19">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule20 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule20">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule21 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule21">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule22 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule22">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule23 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule23">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule24 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule24">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule25 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule25">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule26 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule26">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule27 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule27">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule28 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule28">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule29 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule29">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule30 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule30">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule31 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule31">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule32 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule32">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule33 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule33">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#1-2/3/4-ip -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#1-2/3/4-ip">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#IPAddOrMask"/>
+        <thirdPartIs rdf:datatype="&xsd;int">1</thirdPartIs>
+        <secondPartIs rdf:datatype="&xsd;int">168</secondPartIs>
+        <firstPartIs rdf:datatype="&xsd;int">192</firstPartIs>
+        <fourthPartIs rdf:datatype="&xsd;int">4</fourthPartIs>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#1-2/3/4-mask -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#1-2/3/4-mask">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#IPAddOrMask"/>
+        <fourthPartIs rdf:datatype="&xsd;int">0</fourthPartIs>
+        <firstPartIs rdf:datatype="&xsd;int">255</firstPartIs>
+        <thirdPartIs rdf:datatype="&xsd;int">255</thirdPartIs>
+        <secondPartIs rdf:datatype="&xsd;int">255</secondPartIs>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#1-6-ip -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#1-6-ip">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#IPAddOrMask"/>
+        <firstPartIs rdf:datatype="&xsd;int">162</firstPartIs>
+        <secondPartIs rdf:datatype="&xsd;int">168</secondPartIs>
+        <fourthPartIs rdf:datatype="&xsd;int">4</fourthPartIs>
+        <thirdPartIs rdf:datatype="&xsd;int">5</thirdPartIs>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#1-6-mask -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#1-6-mask">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#IPAddOrMask"/>
+        <fourthPartIs rdf:datatype="&xsd;int">0</fourthPartIs>
+        <secondPartIs rdf:datatype="&xsd;int">255</secondPartIs>
+        <firstPartIs rdf:datatype="&xsd;int">255</firstPartIs>
+        <thirdPartIs rdf:datatype="&xsd;int">255</thirdPartIs>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#10.16.1.246 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#10.16.1.246">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Host"/>
+        <isSubjectOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule26"/>
+        <isSubjectOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule27"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#10.237.1.25 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#10.237.1.25">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Host"/>
+        <isSubjectOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule11"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#10.237.1.26 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#10.237.1.26">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Host"/>
+        <isObjectOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule10"/>
+        <isObjectOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule11"/>
+        <isObjectOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule13"/>
+        <isObjectOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule16"/>
+        <isObjectOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule19"/>
+        <isObjectOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule20"/>
+        <isObjectOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule21"/>
+        <isObjectOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule25"/>
+        <isObjectOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule29"/>
+        <isObjectOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule30"/>
+        <isObjectOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule31"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#10.237.1.33 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#10.237.1.33">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Host"/>
+        <isSubjectOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule12"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#10.237.1.34 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#10.237.1.34">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Host"/>
+        <isObjectOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule12"/>
+        <isObjectOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule14"/>
+        <isObjectOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule15"/>
+        <isObjectOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule17"/>
+        <isObjectOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule18"/>
+        <isObjectOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule22"/>
+        <isObjectOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule23"/>
+        <isObjectOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule24"/>
+        <isObjectOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule26"/>
+        <isObjectOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule28"/>
+        <isObjectOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule32"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#2-5/8/9-ip -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#2-5/8/9-ip">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#IPAddOrMask"/>
+        <thirdPartIs rdf:datatype="&xsd;int">1</thirdPartIs>
+        <secondPartIs rdf:datatype="&xsd;int">168</secondPartIs>
+        <firstPartIs rdf:datatype="&xsd;int">192</firstPartIs>
+        <fourthPartIs rdf:datatype="&xsd;int">9</fourthPartIs>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#2-5/8/9-mask -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#2-5/8/9-mask">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#IPAddOrMask"/>
+        <fourthPartIs rdf:datatype="&xsd;int">0</fourthPartIs>
+        <secondPartIs rdf:datatype="&xsd;int">255</secondPartIs>
+        <firstPartIs rdf:datatype="&xsd;int">255</firstPartIs>
+        <thirdPartIs rdf:datatype="&xsd;int">255</thirdPartIs>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#204.76.239.1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#204.76.239.1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Host"/>
+        <isSubjectOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule18"/>
+        <isSubjectOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule19"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#204.76.239.108 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#204.76.239.108">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Host"/>
+        <isSubjectOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule10"/>
+        <isSubjectOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule17"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#204.76.239.117 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#204.76.239.117">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Host"/>
+        <isSubjectOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule28"/>
+        <isSubjectOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule29"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#204.76.239.124 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#204.76.239.124">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Host"/>
+        <isSubjectOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule21"/>
+        <isSubjectOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule22"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#204.76.239.166 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#204.76.239.166">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Host"/>
+        <isSubjectOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule13"/>
+        <isSubjectOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule14"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#204.76.239.21 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#204.76.239.21">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Host"/>
+        <isSubjectOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule20"/>
+        <isSubjectOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule23"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#204.76.239.24 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#204.76.239.24">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Host"/>
+        <isSubjectOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule24"/>
+        <isSubjectOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule25"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#204.76.239.68 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#204.76.239.68">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Host"/>
+        <isSubjectOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule15"/>
+        <isSubjectOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule16"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#204.76.239.77 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#204.76.239.77">
+        <rdf:type rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Host"/>
+        <isSubjectOf rdf:resource="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule30"/>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.5.0) http://owlapi.sourceforge.net -->
+

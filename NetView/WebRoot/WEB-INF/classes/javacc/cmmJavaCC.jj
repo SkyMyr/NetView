@@ -1,0 +1,409 @@
+/**
+* This is a JJ file for lexical analyzer.
+* 
+* Author: Liang XiaoYan（梁晓艳)
+
+* Date: 2018.07.22
+ */
+options{
+  JDK_VERSION = "1.5";
+}
+PARSER_BEGIN(cmmJavaCC)
+package javacc;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import org.apache.jena.*;
+import org.apache.jena.ontology.OntClass;
+import org.apache.jena.ontology.OntModel;
+import org.apache.jena.ontology.OntModelSpec;
+import org.apache.jena.ontology.Individual;
+import org.apache.jena.ontology.DatatypeProperty;
+import org.apache.jena.ontology.ObjectProperty;
+import org.apache.jena.query.Query;
+import org.apache.jena.query.QueryExecution;
+import org.apache.jena.query.QueryExecutionFactory;
+import org.apache.jena.query.QueryFactory;
+import org.apache.jena.query.QuerySolution;
+import org.apache.jena.query.ResultSet;
+import org.apache.jena.rdf.model.ModelFactory;
+import org.apache.jena.rdf.model.RDFWriter;
+
+public class cmmJavaCC{
+  public static void main(String args[])throws ParseException, FileNotFoundException, IOException{
+	
+    cmmJavaCC parser = new cmmJavaCC(new java.io.FileInputStream("D:\\1.txt"));
+    outer:while (true){
+      System.out.println("Please type the valid statement...");
+      System.out.println("Enter an expression like");
+      System.out.println("\"int(real) a;\" \"a = 3;\" \"read(a);\" \"write(a);\"");
+      System.out.println("Using a \"!\" to terminate your input>>");
+      try {
+        switch (cmmJavaCC.Start()){
+          case 0:System.out.println("OK.You have typed the correct statements.\n");
+          break ;
+          case 1:System.out.println("Goodbye.Thank you for you testing!\n");
+          break outer;
+          default :break ;
+        }
+      }
+      catch (Exception e){
+        System.out.println("Sorry! You have typed the invalid statements.\n");
+        System.out.println(e.getMessage());
+        cmmJavaCC.ReInit(System.in);
+      }
+      catch (Error e){
+        System.out.println("Oops.");
+        System.out.println(e.getMessage());
+        break ;
+      }
+    }
+  }
+}
+PARSER_END(cmmJavaCC)
+SKIP:{
+  " "
+  | "\t"
+  | "\n"
+  | "\r"
+  | <"//"(~["\n", "\r"])*("\n"
+  | "\r"
+  | "\r\n")>
+  | <"/*"(~["*"])*"*"(~["/"](~["*"])*"*")*"/">
+}
+TOKEN:/*定义关键字*/
+{
+  <IP:"ip">
+  | <ACCESSLIST:"access-list">
+  | <EXTENDED:"extended">
+  | <PERMIT:"permit">
+  | <DENY:"deny">
+  | <ANY:"any">
+  | <HOST:"host">
+}
+
+
+
+TOKEN:/*定义字母*/
+{
+  <#LETTER:["a"-"z","A"-"Z"]>
+}
+TOKEN:/* 定义访问控制列表名称 */
+{
+  <ACCESSLISTNAME:(<LETTER>)+>
+}
+TOKEN:/* 定义IP地址*/
+{
+  <IPADDR:((["1"-"9"]|(["1"-"9"]["0"-"9"]) |(["1"-"9"]["0"-"9"]["0"-"9"]))".") { 3}(["1"-"9"]|(["1"-"9"]["0"-"9"]) |(["1"-"9"]["0"-"9"]["0"-"9"])) >
+}
+
+TOKEN:/*定义数字*/
+{
+  <#DIGIT:["0"-"9"]>
+}
+
+TOKEN:/* 定义规则序号*/
+{
+  <RULEORDER:(<DIGIT> )+ >
+}
+
+int Start()throws ParseException, FileNotFoundException, IOException :{}{
+  Procedure(){
+    return 0;
+  }
+}
+/*处理主程序*/
+void Procedure()throws ParseException, FileNotFoundException, IOException :{}{
+
+  [ Block() ]
+  ( Statement())+
+  <EOF>
+  
+}
+/*处理语句*/
+void Statement()throws ParseException, FileNotFoundException, IOException :{}{
+  accesslistExtendedStatement()
+| accesscontrol()
+
+}
+void Block()throws ParseException, FileNotFoundException, IOException :{}{
+  "{"(Statement()
+  | Block())+"}"
+}
+
+/*处理访问控制列表声明语句*/
+void accesslistExtendedStatement()throws ParseException, FileNotFoundException, IOException :{}{
+ termIP()<ACCESSLIST><EXTENDED>termACCESSLISTNAME()
+}
+
+void termACCESSLISTNAME()throws ParseException, FileNotFoundException, IOException:
+{
+	Token termALN;
+ }
+{
+  	termALN=<ACCESSLISTNAME>
+  	{
+	  	OntModel ontModel = ModelFactory.createOntologyModel();
+		ontModel.read("D:\\ACOntology.owl");
+		String NS="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#";
+		OntClass acnc = ontModel.getOntClass("http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#ACName");
+		Individual acn=acnc.createIndividual(NS+termALN.image);
+		DatatypeProperty obp=ontModel.getDatatypeProperty(NS+"nameIs");
+		ontModel.add(acn,obp,termALN.image);
+		FileOutputStream file = new FileOutputStream("D:\\ACOntology.owl");
+		RDFWriter rdfWriter= ontModel.getWriter("RDF/XML");
+		rdfWriter.write(ontModel, file, "RDF/XML");
+		file.close();
+		System.out.println(termALN.image);
+
+	}
+}
+
+/*处理访问控制列表声明语句*/
+void accesscontrol()throws ParseException, FileNotFoundException, IOException:
+{
+	String ruleorder;
+	String host1="agc", host2="bcd";String action="abc";
+	
+}
+{
+  
+ruleorder=termRULEORDER() {System.out.println("ruleorder is:"+ruleorder); }
+(< PERMIT>
+{
+  action="permit";
+}
+|< DENY>
+{
+  action="deny";
+}
+)
+<IP>
+ (   ((<HOST> host1=termIPADDR() )|host1=termANY()) ((<HOST> host2=termIPADDR())|host2=termANY()) )
+    {
+      if(( !host1.equals("any"))&&( !host2.equals("any")))
+      { 
+      	System.out.println("host1 is:"+host1);System.out.println("host2 is:"+host2);
+	 	OntModel ontModel = ModelFactory.createOntologyModel();
+		ontModel.read("D:\\ACOntology.owl");
+		String NS="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#";
+		Individual indi1 = ontModel.getIndividual(NS+"HOST"+host1);
+		Individual indi2 = ontModel.getIndividual(NS+"HOST"+host2);
+		Individual indi3 = ontModel.getIndividual(NS+"Rule"+ruleorder);
+		Individual protocol = ontModel.getIndividual(NS+"IP");
+		ObjectProperty obp1=ontModel.getObjectProperty(NS+"isSubjectOf");
+		ObjectProperty obp2=ontModel.getObjectProperty(NS+"isObjectOf");
+		ObjectProperty obp3=ontModel.getObjectProperty(NS+"isOperationOf");
+		ontModel.add(indi1,obp1,indi3);
+		ontModel.add(indi2,obp2,indi3);
+		ontModel.add(protocol,obp3,indi3);
+		if (action.equals("permit"))
+		{
+		  ObjectProperty obp4=ontModel.getObjectProperty(NS+"isActionOf");
+		  Individual permit1 = ontModel.getIndividual(NS+"PERMIT");
+		  ontModel.add(permit1,obp4,indi3);
+		}
+		if (action.equals("deny"))
+		{
+		  ObjectProperty obp4=ontModel.getObjectProperty(NS+"isActionOf");
+		  Individual permit1 = ontModel.getIndividual(NS+"DENY");
+		  ontModel.add(permit1,obp4,indi3);
+		}
+		
+		FileOutputStream file = new FileOutputStream("D:\\ACOntology.owl");
+		RDFWriter rdfWriter= ontModel.getWriter("RDF/XML");
+		rdfWriter.write(ontModel, file, "RDF/XML");
+		file.close();
+		}
+
+		if(( !host1.equals("any"))&&( host2.equals("any")))
+      	{
+      	  	OntModel ontModel = ModelFactory.createOntologyModel();
+			ontModel.read("D:\\ACOntology.owl");
+			String NS="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#";
+			Individual indi1 = ontModel.getIndividual(NS+"HOST"+host1);
+			OntClass acnc = ontModel.getOntClass("http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#UnconsideredEntities");
+			Individual indi2=acnc.createIndividual(NS+host1+"ToOthers");		
+			Individual indi3 = ontModel.getIndividual(NS+"Rule"+ruleorder);
+			ObjectProperty obp1=ontModel.getObjectProperty(NS+"isSubjectOf");
+			ObjectProperty obp2=ontModel.getObjectProperty(NS+"isOperationOf");
+			ontModel.add(indi1,obp1,indi3);
+			ontModel.add(indi2,obp2,indi3);
+			Individual protocol = ontModel.getIndividual(NS+"IP");
+			ObjectProperty obp3=ontModel.getObjectProperty(NS+"isOperateOf");
+			ontModel.add(protocol,obp3,indi3);
+			if (action.equals("permit"))
+		{
+		  ObjectProperty obp4=ontModel.getObjectProperty(NS+"isActionOf");
+		  Individual permit1 = ontModel.getIndividual(NS+"PERMIT");
+		  ontModel.add(permit1,obp4,indi3);
+		}
+		if (action.equals("deny"))
+		{
+		  ObjectProperty obp4=ontModel.getObjectProperty(NS+"isActionOf");
+		  Individual permit1 = ontModel.getIndividual(NS+"DENY");
+		  ontModel.add(permit1,obp4,indi3);
+		}
+		
+			FileOutputStream file = new FileOutputStream("D:\\ACOntology.owl");
+			RDFWriter rdfWriter= ontModel.getWriter("RDF/XML");
+			rdfWriter.write(ontModel, file, "RDF/XML");
+			file.close();
+     		System.out.println("host2 is:"+host2);
+		}
+		if(( host1.equals("any"))&&(! host2.equals("any")))
+      	{
+
+      	  	OntModel ontModel = ModelFactory.createOntologyModel();
+			ontModel.read("D:\\ACOntology.owl");
+			String NS="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#";
+			OntClass acnc = ontModel.getOntClass("http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#UnconsideredEntities");
+			Individual indi1=acnc.createIndividual(NS+"OthersTo"+host2);
+			Individual indi2 = ontModel.getIndividual(NS+"HOST"+host2);	
+			Individual indi3 = ontModel.getIndividual(NS+"Rule"+ruleorder);
+			ObjectProperty obp1=ontModel.getObjectProperty(NS+"isSubjectOf");
+			ObjectProperty obp2=ontModel.getObjectProperty(NS+"isObjectOf");
+			ontModel.add(indi1,obp1,indi3);
+			ontModel.add(indi2,obp2,indi3);
+			Individual protocol = ontModel.getIndividual(NS+"IP");
+			ObjectProperty obp3=ontModel.getObjectProperty(NS+"isOperationOf");
+			ontModel.add(protocol,obp3,indi3);
+				if (action.equals("permit"))
+		{
+		  ObjectProperty obp4=ontModel.getObjectProperty(NS+"isActionOf");
+		  Individual permit1 = ontModel.getIndividual(NS+"PERMIT");
+		  ontModel.add(permit1,obp4,indi3);
+		}
+		if (action.equals("deny"))
+		{
+		  ObjectProperty obp4=ontModel.getObjectProperty(NS+"isActionOf");
+		  Individual permit1 = ontModel.getIndividual(NS+"DENY");
+		  ontModel.add(permit1,obp4,indi3);
+		}
+		
+			FileOutputStream file = new FileOutputStream("D:\\ACOntology.owl");
+			RDFWriter rdfWriter= ontModel.getWriter("RDF/XML");
+			rdfWriter.write(ontModel, file, "RDF/XML");
+			file.close();
+     		System.out.println("host2 is:"+host2);
+     		System.out.println("host1 is:"+host1);
+		}
+		if(( host1.equals("any"))&&( host2.equals("any")))
+      	{
+      	  	OntModel ontModel = ModelFactory.createOntologyModel();
+			ontModel.read("D:\\ACOntology.owl");
+			String NS="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#";
+			
+			OntClass acnc = ontModel.getOntClass("http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#UnconsideredEntities");
+			Individual indi1=acnc.createIndividual(NS+"OthersTo"+host2);
+			Individual indi2=acnc.createIndividual(NS+host1+"ToOthers");		
+			Individual indi3 = ontModel.getIndividual(NS+"Rule"+ruleorder);
+			ObjectProperty obp1=ontModel.getObjectProperty(NS+"isSubjectOf");
+			ObjectProperty obp2=ontModel.getObjectProperty(NS+"isObjectOf");
+			ontModel.add(indi1,obp1,indi3);
+			ontModel.add(indi2,obp2,indi3);
+			Individual protocol = ontModel.getIndividual(NS+"IP");
+			ObjectProperty obp3=ontModel.getObjectProperty(NS+"isOperationOf");
+			ontModel.add(protocol,obp3,indi3);
+			FileOutputStream file = new FileOutputStream("D:\\ACOntology.owl");
+			RDFWriter rdfWriter= ontModel.getWriter("RDF/XML");
+			rdfWriter.write(ontModel, file, "RDF/XML");
+			file.close();
+     		System.out.println("host1 is:"+host1);
+     		System.out.println("host2 is:"+host2);
+		}	
+    }
+}
+
+String termRULEORDER()throws ParseException, FileNotFoundException, IOException:
+{
+  Token termRO;
+}
+{
+  termRO=<RULEORDER>
+  	{
+	  	OntModel ontModel = ModelFactory.createOntologyModel();
+		ontModel.read("D:\\ACOntology.owl");
+		String NS="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#";
+		OntClass acnc = ontModel.getOntClass("http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Rule");
+		Individual acn=acnc.createIndividual(NS+"Rule"+termRO.image);
+		FileOutputStream file = new FileOutputStream("D:\\ACOntology.owl");
+		RDFWriter rdfWriter= ontModel.getWriter("RDF/XML");
+		rdfWriter.write(ontModel, file, "RDF/XML");
+		file.close();
+		System.out.println(termRO.image);
+		return termRO.image;
+	}
+}
+ 
+String termIP():
+{
+  Token tIP;
+}
+{
+  tIP=<IP>
+  {
+    System.out.println(tIP.image);
+    return tIP.image;
+  }
+}
+
+String termIPADDR()throws ParseException, FileNotFoundException, IOException:
+{
+  Token t;
+  String s1=new String("abc");
+  String s2=new String("abc");
+  String s3=new String("abc");
+  String s4=new String("abc");
+}
+{
+  t=<IPADDR>
+  {
+	int i=t.image.indexOf(".");
+	s1=t.image.substring(0,i);
+	System.out.println(s1);
+	int j=t.image.indexOf(".",i+1);
+	s2=t.image.substring(i+1,j);
+	System.out.println(s2);
+	int k=t.image.indexOf(".",j+1);
+	s3=t.image.substring(j+1,k);
+	System.out.println(s3);
+   	s4=t.image.substring(k+1,t.image.length());
+	System.out.println(s4);
+	
+OntModel ontModel = ModelFactory.createOntologyModel();
+		ontModel.read("D:\\ACOntology.owl");
+		String NS="http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#";
+		OntClass acnc = ontModel.getOntClass("http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#IPAddOrMask");
+		Individual acn=acnc.createIndividual(NS+"IP"+t.image);
+		DatatypeProperty obp=ontModel.getDatatypeProperty(NS+"firstPartIs");
+		ontModel.add(acn,obp,s1);
+		DatatypeProperty obp2=ontModel.getDatatypeProperty(NS+"secondPartIs");
+		ontModel.add(acn,obp2,s2);
+		DatatypeProperty obp3=ontModel.getDatatypeProperty(NS+"thirdPartIs");
+		ontModel.add(acn,obp3,s3);
+		DatatypeProperty obp4=ontModel.getDatatypeProperty(NS+"fourthPartIs");
+		ontModel.add(acn,obp4,s4);
+		OntClass acnc2 = ontModel.getOntClass("http://www.semanticweb.org/lydia/ontologies/2018/3/untitled-ontology-36#Host");
+		Individual acn2=acnc2.createIndividual(NS+"HOST"+t.image);
+		ObjectProperty obp5=ontModel.getObjectProperty(NS+"isIpAddOf");
+		ontModel.add(acn,obp5,acn2);
+		FileOutputStream file = new FileOutputStream("D:\\ACOntology.owl");
+		RDFWriter rdfWriter= ontModel.getWriter("RDF/XML");
+		rdfWriter.write(ontModel, file, "RDF/XML");
+		file.close();
+		return t.image;
+  }
+}
+String termANY()throws ParseException, FileNotFoundException, IOException:
+{
+  Token t;
+}
+{
+	 t=<ANY>
+	{
+	  return t.image;
+	}
+}
+
+
